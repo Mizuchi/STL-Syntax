@@ -1,7 +1,6 @@
 " Vim syntax file
 " Language:	C++ STL
 " Maintainer:	Mizuchi <ytj000@gmail.com>
-" Last Change:	12 May 2014
 "
 " This script is aimed at making STL (and boost) user has the most readable
 " highlight. Not just highlight all STL functions and types. So some syntax
@@ -869,6 +868,7 @@ syntax keyword cppSTLconstant WCHAR_MAX
 
 if !exists("cpp_no_cpp11")
     syntax keyword cppSTLtype nullptr_t max_align_t
+    syntax keyword cppSTLconstant nullptr
     syntax keyword cppSTLtype type_index
     syntax keyword cppSTLtype initializer_list
 
@@ -1480,8 +1480,13 @@ if !exists("cpp_no_cpp14")
     syntax keyword cppSTLtype dynarray
 
     "thread
-    syntax keyword cppSTLtype shared_mutex
+    syntax keyword cppSTLtype shared_timed_mutex
     syntax keyword cppSTLtype shared_lock
+    syntax keyword cppSTLfunction try_lock_for
+    syntax keyword cppSTLfunction try_lock_until
+    syntax keyword cppSTLfunction try_lock_shared_for
+    syntax keyword cppSTLfunction try_lock_shared_until
+    syntax keyword cppSTLfunction unlock_shared
 
     "memory
     syntax keyword cppSTLfunction make_unique
@@ -1528,6 +1533,56 @@ if !exists("cpp_no_boost")
     syntax keyword cppSTLnamespace boost
     syntax keyword cppSTLcast lexical_cast
 endif " Boost
+
+if !exists("cpp_no_cpp17")
+    " optional
+    syntax keyword cppSTLtype optional
+    syntax keyword cppSTLfunction make_optional
+    syntax keyword cppSTLexception bad_optional_access
+    syntax keyword cppSTLtype nullopt_t
+    syntax keyword cppSTLconstant nullopt
+
+    " any
+    syntax keyword cppSTLcast any_cast
+    syntax keyword cppSTLexception bad_any_cast
+
+    " variant
+    syntax keyword cppSTLtype variant
+    syntax keyword cppSTLtype monostate
+    syntax keyword cppSTLexception bad_variant_access
+    syntax keyword cppSTLtype variant_size
+    syntax keyword cppSTLconstant variant_size_v
+    syntax keyword cppSTLtype variant_alternative
+    syntax keyword cppSTLconstant variant_alternative_t
+    syntax keyword cppSTLconstant variant_npos
+    syntax keyword cppSTLfunction holds_alternative
+    syntax keyword cppSTLfunction get_if
+    syntax keyword cppSTLfunction visit
+
+    " string_view
+    syntax keyword cppSTLtype basic_string_view
+    syntax keyword cppSTLtype string_view
+    syntax keyword cppSTLtype u8string_view
+    syntax keyword cppSTLtype u16string_view
+    syntax keyword cppSTLtype u32string_view
+    syntax keyword cppSTLtype wstring_view
+    syntax keyword cppSTLfunction remove_prefix
+    syntax keyword cppSTLfunction remove_suffix
+    syntax keyword cppSTLfunction starts_with
+    syntax keyword cppSTLfunction ends_with
+
+    " thread
+    syntax keyword cppSTLtype shared_mutex
+    syntax keyword cppSTLtype lock_shared, try_lock_shared
+    syntax keyword cppSTLtype scoped_lock
+
+    " tuple
+    syntax keyword cppSTLfunction make_from_tuple
+    syntax keyword cppSTLfunction apply
+
+    " type_traits
+    syntax keyword cppSTLtype bool_constant
+endif " C++17
 
 " Default highlighting
 if version >= 508 || !exists("did_cpp_syntax_inits")
