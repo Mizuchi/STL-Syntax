@@ -1012,13 +1012,13 @@ if !exists("cpp_no_cpp11")
     syntax keyword cppSTLfunction make_move_iterator
     syntax keyword cppSTLfunction next prev
 
-    " program support utilities
+    " cstdlib
     syntax keyword cppSTLfunction quick_exit
     syntax keyword cppSTLfunction _Exit
     syntax keyword cppSTLfunction at_quick_exit
     syntax keyword cppSTLfunction forward
 
-    " date and time
+    " chrono
     syntax keyword cppSTLnamespace chrono
     syntax keyword cppSTLtype duration
     syntax keyword cppSTLtype system_clock
@@ -1045,11 +1045,6 @@ if !exists("cpp_no_cpp11")
 
     " Container
     syntax keyword cppSTLtype array
-    syntax keyword cppSTLtype forward_list
-    syntax keyword cppSTLtype unordered_map
-    syntax keyword cppSTLtype unordered_set
-    syntax keyword cppSTLtype unordered_multimap
-    syntax keyword cppSTLtype unordered_multiset
     syntax keyword cppSTLtype tuple
     syntax keyword cppSTLfunction cbegin
     syntax keyword cppSTLfunction cend
@@ -1061,7 +1056,8 @@ if !exists("cpp_no_cpp11")
     syntax keyword cppSTLfunction emplace_front
     syntax keyword cppSTLfunction emplace_hint
 
-    "forward_list
+    " forward_list
+    syntax keyword cppSTLtype forward_list
     syntax keyword cppSTLfunction before_begin
     syntax keyword cppSTLfunction cbefore_begin
     syntax keyword cppSTLfunction insert_after
@@ -1070,6 +1066,10 @@ if !exists("cpp_no_cpp11")
     syntax keyword cppSTLfunction splice_after
 
     " unordered
+    syntax keyword cppSTLtype unordered_map
+    syntax keyword cppSTLtype unordered_set
+    syntax keyword cppSTLtype unordered_multimap
+    syntax keyword cppSTLtype unordered_multiset
     syntax keyword cppSTLtype hash
     syntax keyword cppSTLtype hasher
     syntax keyword cppSTLtype key_equal
@@ -1390,16 +1390,16 @@ if !exists("cpp_no_cpp11")
     syntax keyword cppSTLtype ratio_greater
     syntax keyword cppSTLtype ratio_greater_equal
 
-    "limits
+    " limits
     syntax keyword cppSTLfunction lowest
 
-    "cuchar
+    " cuchar
     syntax keyword cppSTLfunction mbrtoc16
     syntax keyword cppSTLfunction c16rtomb
     syntax keyword cppSTLfunction mbrtoc32
     syntax keyword cppSTLfunction c32rtomb
 
-    "cinttypes
+    " cinttypes
     syntax keyword cppSTLfunction strtoimax
     syntax keyword cppSTLfunction strtoumax
     syntax keyword cppSTLfunction wcstoimax
@@ -1412,7 +1412,7 @@ if !exists("cpp_no_cpp11")
     syntax keyword cppSTLtype minutes
     syntax keyword cppSTLtype hours
 
-    "regex
+    " regex
     syntax keyword cppSTLtype regex
     syntax keyword cppSTLtype wregex
     syntax keyword cppSTLtype basic_regex
@@ -1478,10 +1478,10 @@ if !exists("cpp_no_cpp11")
 endif " C++11
 
 if !exists("cpp_no_cpp14")
-    "dynarray
+    " dynarray
     syntax keyword cppSTLtype dynarray
 
-    "thread
+    " thread
     syntax keyword cppSTLtype shared_timed_mutex
     syntax keyword cppSTLtype shared_lock
     syntax keyword cppSTLfunction try_lock_for
@@ -1490,10 +1490,10 @@ if !exists("cpp_no_cpp14")
     syntax keyword cppSTLfunction try_lock_shared_until
     syntax keyword cppSTLfunction unlock_shared
 
-    "memory
+    " memory
     syntax keyword cppSTLfunction make_unique
 
-    " Type modifications
+    " type_traits
     syntax keyword cppSTLtype remove_cv_t
     syntax keyword cppSTLtype remove_const_t
     syntax keyword cppSTLtype remove_volatile_t
@@ -1518,14 +1518,13 @@ if !exists("cpp_no_cpp14")
     syntax keyword cppSTLtype underlying_type_t
     syntax keyword cppSTLtype result_of_t
 
-    " integer sequence
+    " utility
     syntax keyword cppSTLtype integer_sequence
     syntax keyword cppSTLtype index_sequence_for
     syntax keyword cppSTLtype make_integer_sequence
     syntax keyword cppSTLtype make_index_sequence
-
-    " utility
     syntax keyword cppSTLfunction exchange
+
 endif " C++14
 
 if !exists("cpp_no_cpp17")
@@ -1702,6 +1701,7 @@ if !exists("cpp_no_cpp17")
     syntax keyword cppSTLtype invoke_result
     syntax keyword cppSTLtype invoke_result_t
     syntax keyword cppSTLfunction is_constant_evaluated
+    syntax keyword cppSTLtype void_t
 
     " utility
     syntax keyword cppSTLfunction as_const
@@ -1712,6 +1712,11 @@ if !exists("cpp_no_cpp17")
     syntax keyword cppSTLtype in_place_t
     syntax keyword cppSTLtype in_place_type_t
     syntax keyword cppSTLtype in_place_index_t
+
+    " Algorithm
+    syntax keyword cppSTLfunction for_each_n
+    syntax keyword cppSTLfunction sample
+    syntax keyword cppSTLfunction clamp
 
 endif " C++17
 
