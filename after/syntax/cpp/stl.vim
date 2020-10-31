@@ -867,8 +867,7 @@ syntax keyword cppSTLconstant WCHAR_MIN
 syntax keyword cppSTLconstant WCHAR_MAX
 
 if !exists("cpp_no_cpp11")
-    syntax keyword cppSTLtype nullptr_t max_align_t
-    syntax keyword cppSTLconstant nullptr
+    syntax keyword cppSTLtype max_align_t
     syntax keyword cppSTLtype type_index
     syntax keyword cppSTLtype initializer_list
 
@@ -987,9 +986,6 @@ if !exists("cpp_no_cpp11")
     syntax keyword cppSTLfunction align
     syntax keyword cppSTLfunction make_shared
     syntax keyword cppSTLfunction allocate_shared
-    syntax keyword cppSTLcast static_pointer_cast
-    syntax keyword cppSTLcast dynamic_pointer_cast
-    syntax keyword cppSTLcast const_pointer_cast
     syntax keyword cppSTLfunction get_deleter
 
     " function object
@@ -1295,8 +1291,6 @@ if !exists("cpp_no_cpp11")
 
     syntax keyword cppSTLtype memory_order
     syntax keyword cppSTLfunction atomic_init
-    syntax keyword cppSTLfunction ATOMIC_VAR_INIT
-    syntax keyword cppSTLconstant ATOMIC_FLAG_INIT
     syntax keyword cppSTLfunction kill_dependency
     syntax keyword cppSTLfunction atomic_thread_fence
     syntax keyword cppSTLfunction atomic_signal_fence
